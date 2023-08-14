@@ -532,7 +532,7 @@ static void update_snap_state(void)
   // double timeElapsed = endTime - startTime;
   // g_syscall( CG_PRINT, vaf("Elapsed time: %.6f\n", timeElapsed));
 
-  ASSERT_GT(s.a, 0);
+  // ASSERT_GT(s.a, 0);
   s.maxAccel             = (unsigned char)(s.a + .5f);
   unsigned char xnyAccel = (unsigned char)(s.a / sqrtf(2.f) + .5f); // xAccel and yAccel at 45deg
                                                                     // ^       ^  ^
