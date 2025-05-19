@@ -25,12 +25,18 @@
 #if defined(_MSC_VER)
 #  define QDECL __cdecl
 #elif defined(__clang__)
-#  define QDECL __attribute__((cdecl))
+#  if (defined(__ppc64__) || defined(__PPC64__) || defined(__ppc64le__) || defined(__PPC64LE__))
+#    define QDECL // warning: 'cdecl' attribute ignored [-Wattributes]
+#  else
+#    define QDECL __attribute__((cdecl))
+#  endif
 #elif defined(__GNUC__)
 #  if defined(__x86_64__)
 #    define QDECL // warning: 'cdecl' attribute ignored [-Wattributes]
 #  elif defined(__i386__)
 #    define QDECL __attribute__((cdecl))
+#  elif (defined(__ppc64__) || defined(__PPC64__) || defined(__ppc64le__) || defined(__PPC64LE__))
+#    define QDECL // warning: 'cdecl' attribute ignored [-Wattributes]
 #  else
 #    error Unsupported architecture.
 #  endif
