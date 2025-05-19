@@ -73,6 +73,18 @@ This C/C++ proxymod project uses CMake to control the building process. Both Git
        -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m64"     \
        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m64"
    ```
+   To generate makefiles for the ppc64le architecture with gcc (clang also supported), do:
+      ```
+   $ cmake                                         \
+       -S <repo_path>                              \
+       -B <build_path>                             \
+       -DBINARY_NAME=cgameppc64le                  \
+       -DCMAKE_BUILD_TYPE=Release                  \
+       -DCMAKE_C_COMPILER=gcc                      \
+       -DCMAKE_CXX_COMPILER=g++                    \
+       -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m64"     \
+       -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m64 -Wno-error=cpp "
+   ```
    Note that the binary name for a 32-bit Windows build is `cgamex86`, while `cgamei386` on Linux. The binary name for a 64-bit build, however, is `cgamex86_64` on both Windows and Linux.
 2. Build the source code.
    ```
